@@ -38,6 +38,14 @@ class TestBooksCollector:
         collector.set_book_genre(book_name,genre_name)
         assert len(collector.get_book_genre(book_name))==0
 
+    def test_get_book_genre(self):
+        collector = BooksCollector()
+        book_name = 'Десять негретят'
+        genre_name = 'Детективы'
+        collector.add_new_book(book_name)
+        collector.set_book_genre(book_name,genre_name)
+        assert collector.get_book_genre(book_name)==genre_name
+
     def test_get_books_with_specific_genre(self):
         collector = BooksCollector()
         collector.add_new_book('Антошка')
