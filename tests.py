@@ -76,6 +76,16 @@ class TestBooksCollector:
         collector.set_book_genre(book_name,genre_name)
         assert len(collector.get_books_for_children())==0
 
+    def test_add_book_in_favorites(self):
+        collector = BooksCollector()
+        book_name='Приключение незнайки'
+        collector.add_new_book(book_name)
+        collector.add_book_in_favorites(book_name)
+        assert ''.join(collector.favorites)==book_name
+
+
+
+
 
 
 
