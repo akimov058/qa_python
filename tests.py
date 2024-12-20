@@ -38,6 +38,14 @@ class TestBooksCollector:
         collector.set_book_genre(book_name,genre_name)
         assert len(collector.get_book_genre(book_name))==0
 
+    def test_get_books_with_specific_genre(self):
+        collector = BooksCollector()
+        collector.add_new_book('Антошка')
+        collector.set_book_genre('Антошка','Мультфильмы')
+        collector.add_new_book('Колобок')
+        collector.set_book_genre('Колобок', 'Мультфильмы')
+        assert len(collector.get_books_with_specific_genre('Мультфильмы'))==2
+
     @pytest.mark.parametrize('book_name',['Гарри Поттер часть 1','Гарри Поттер часть 2','Гарри Поттер часть 3'])
     def test_get_books_genre(self,book_name):
         collector = BooksCollector()
@@ -88,15 +96,11 @@ class TestBooksCollector:
         collector.delete_book_from_favorites(book_name)
         assert len(collector.get_list_of_favorites_books())==0
 
+    def test_get_list_of_favorites_books(self):
+        collector = BooksCollector()
+        book_name = 'Волшебник изумрудного города 3'
+        collector.add_new_book(book_name)
+        collector.add_book_in_favorites(book_name)
+        check_get_list_of_favorites_books = len(collector.get_list_of_favorites_books())
+        assert check_get_list_of_favorites_books==1
 
-
-
-
-
-
-
-
-
-
-    # напиши свои тесты ниже
-    # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
