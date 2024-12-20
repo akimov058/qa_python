@@ -81,7 +81,7 @@ class TestBooksCollector:
         book_name = 'Приключение незнайки'
         collector.add_new_book(book_name)
         collector.add_book_in_favorites(book_name)
-        assert ''.join(collector.favorites)==book_name
+        assert ''.join(collector.get_list_of_favorites_books())==book_name
 
     def test_add_book_in_favorites_add_two_equal_books(self):
         collector = BooksCollector()
@@ -89,7 +89,17 @@ class TestBooksCollector:
         collector.add_new_book(book_name)
         collector.add_book_in_favorites(book_name)
         collector.add_book_in_favorites(book_name)
-        assert len(collector.favorites)==1
+        assert len(collector.get_list_of_favorites_books())==1
+
+    def test_delete_book_from_favorites(self):
+        collector = BooksCollector()
+        book_name = 'Волшебник изумрудного города 2'
+        collector.add_new_book(book_name)
+        collector.add_book_in_favorites(book_name)
+        collector.delete_book_from_favorites(book_name)
+        assert len(collector.get_list_of_favorites_books())==0
+
+
 
 
 
