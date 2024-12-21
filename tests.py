@@ -59,7 +59,7 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book(book_name)
         collector.set_book_genre(book_name,'Фантастика')
-        assert collector.get_books_genre()==collector.books_genre
+        assert collector.get_books_genre().get(book_name)==collector.books_genre.get(book_name)
 
     @pytest.mark.parametrize('book_name,genre_name',[
         ['Остров сокровищ','Мультфильмы'],
